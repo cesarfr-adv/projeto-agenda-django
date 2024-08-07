@@ -7,8 +7,7 @@ from django.utils import timezone
 # email (email), created_date (date), description (text)
 
 # depois
-# category (foreign key), show (boolean), owner (foreign key)
-# picture (image)
+# category (foreign key), show (boolean), picture (image)
 
 
 # Create your models here.
@@ -19,6 +18,8 @@ class Contact(models.Model):
     email = models.EmailField(max_length=254, blank=True)
     created_date = models.DateTimeField(default=timezone.now)
     description = models.TextField(blank=True)
+    show = models.BooleanField(default=True)
+    picture = models.ImageField(upload_to='pictures/%y/%m/', blank=True)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
